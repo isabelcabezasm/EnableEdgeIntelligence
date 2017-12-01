@@ -160,9 +160,9 @@ All communication between the edge device and the cloud is done through edge run
 There is a telemetry stream going from the device (on the left) to the cloud, and the cloud is sending comands to the IoT Edge. 
 I show two arrows (logical arrows), that are an encrypted channel between IoT device and IoT hub. 
 
-**Device twins** is the core concept here and it enables device management to happen.
-**Device twins** have two properties: **desired property and reported property**. The desired property is owned by the cloud and can define what the desire property would be and that goes down to the IoT device, and the IoT device interprets that.<br/>
-The reported property is owned by the device, and it is send up to the cloud.<br/>
+**Device twins** is the core concept here and it enables device management to happen. <br />
+**Device twins** have two properties: **desired property and reported property**. <br />The **desired property** is owned by the cloud and can define what the desire property would be and that goes down to the IoT device, and the IoT device interprets that.<br/>
+The **reported property** is owned by the device, and it is send up to the cloud.<br/>
 Any time the IoT Hub in the cloud has the current state of the device (through the reported property) and any change. <br/>
 
 These are the underlying mechanisms that we have in terms of Twins, which can use to configure IoT device today.
@@ -170,3 +170,29 @@ These are the underlying mechanisms that we have in terms of Twins, which can us
 Now, this concept, we can apply it to the IoT edge device as well as the IoT Edge modules.
 
 There are some other things also within a device management: they tag their methods, they job in queries  -i won't mention here-.. But really this is the core concept that we use for IoT Edge.
+
+##IoT Edge in action
+![IoT Edge in Action](/images/11_iotedge_in_action.png)
+
+The blue rectangle is IoT Edge  (device) , with its SO (Windows or Linux).
+Secure boot.
+
+We have any kind of device, and when we put the IoT Edge Runtime, then it brings down the edge functionality on to this device.
+
+The Operator selects which device is connected and which node in the device. <br/>
+And then, in the cloud is deciding which workloads are needed to come down into the device (with Twins). Then the Edge runtime interprets the desired properties from the Twin and start pulling down these containers (that could be anything, any container based in workloads - Azure functions as stream analytics edge, ML, your own code…) 
+
+The operator defines routes for these devices at these modules.
+The routes are essentially when a message comes out from one module and it needs where it has to go. <br/>
+Those routes are all defined in the cloud, in the device twin, then the routes come down and the edge runtime picks that up and starts the implementation.  <br />
+Each module also has a twin in the cloud  and it brings down to the module (device). If we change a desired property in the twin, it will change in the edge module. 
+
+**Device** => container workloads. <br />
+**Routes** => in the cloud & control how messaging happens in the device<br />
+**Module twin** => control define what kind of modules and parameters, and understanding what the state of each module is.<br />
+
+
+Define in the cloud, how the edge device behaves (Configuration.)
+
+**IP based device**: All the trafic can be routed from the edge device to different modules or send up to the cloud. <br />
+If the device is **not an IP based device**, but it has bluetooth, you can put the BT module. It would be listening communication protocols (com port) and it would pick up all the data, and the module will become a proxy for that.
