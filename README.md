@@ -132,7 +132,7 @@ It can be used to get the state of the module, send out data to the module from 
 ## Concept: Azure IoT Edge Runtime
 ![Concept: IoT Edge runtime](/images/8_concept_runtime.png)
 
-**IoT Edge Runtime**sits on top of the device. <br/>
+**IoT Edge Runtime** sits on top of the device. <br/>
 The device is connected to an IoT Hub and modules are sitting on top of it.
 The runtime is the responsible for installing and updating all workloads on the device (heart of the system). It maintains the security so the runtime has access to all security tokens, the certification, the keys… which are in the hardware and it brings them up to each module for authentication….
 
