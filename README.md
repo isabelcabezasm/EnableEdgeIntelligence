@@ -196,3 +196,51 @@ Define in the cloud, how the edge device behaves (Configuration.)
 
 **IP based device**: All the trafic can be routed from the edge device to different modules or send up to the cloud. <br />
 If the device is **not an IP based device**, but it has bluetooth, you can put the BT module. It would be listening communication protocols (com port) and it would pick up all the data, and the module will become a proxy for that.
+
+## Security
+
+Principles that we have for securing the edge. 
+![Security](/images/12_security.png)
+
+-> Developers are abstracted from the details of security. 
+
+**Identify and secure the device in hardware.**
+
+Hardware could be different technologies, but it's all rooted in the hardware. <br>
+On top of this hardware we have a secure boot process that allows you to boot or recover de device. <br>
+Above that is the secure execution environment. This is part of the OS, which is secured by the hardware and OS, and there will run some components, like secure agents <br>
+And then we have the security cypher resources. All the modules running in containers, where you have the edge runtime orchestrating all of these containers (so that's a really high level view).
+
+## Securing Azure IoT Edge
+
+![Securing Azure IoT Edge](/images/12_securing_azure_iotedge.png)
+
+"Secure processor" => secure root of trust. <br>
+**Boot process** When the device boots up, it boots up the secure runtime, which is our security agent and a common root of trust (http://www.symantec.com/rot/) which is essentially an API layer-2.<br>
+The hardware based root of trust in the secure of your OS, and once is booted up, as part of the boot sequence it checks for *tendecity* (?) of the code, if the code is the correct code it has to be brought up, and then, if is the right code, once is up and running, it makes that the code remains pristine.  (Checked though the interface of the secure execution environment)
+
+When this is done, the runtime can be started. <br>
+The standard execution environment is being run and then the different modules. Now you have your services put in containers.<br>
+
+The edge runtime is always talking to the cloud, and this is important because is the cloud who knows how the device must be configurated, and here you have the root of trust on the device.<br>
+
+Some of these modules running could need crypto material: keys, certificates… Then they do a call to de secure part of the OS and it provides the right material from the API which is on top of the secure runtime. It is based on secure root of trust and it comes up, and now each module can trust whatever information is being passed to them.<br>
+
+If you want to know more about how this model works, we have already a showcase of this infrastructure with a couple of partners who we signed a partnership agreements (MX chip and ….)<br>
+
+We are very serious  about making sure that the edge is secured to the maximum possible level.<br>
+
+## Hardware for IoT Edge
+
+![Hardware for IoT Edge](/images/13_Hardware_for_IoT_Edge.png)
+
+-> **Sensor Tier**: small little sensors, temperature and so on…
+
+-> **Gateway class devices**: big, powerful devices (allows you to do a lot 
+of processing on them)
+
+We're supporting X64 and ARM and SO that support containers.
+
+The **Hardware** size depends on the scenario: if you're going down some complex ML, large models in AI which requires a lot of compute, you might go to the right of the spectrum (get a powerful device with CPU, storage and so on…). But if you are running little workloads like little bit of data aggregation, some analytics, and then you're passing that data to de cloud, or store it, you just need devices of "interactive tier", like Raspberry Pi 3 kind devices. 
+
+The security model is available for this whole spectrum (Interactive, Industrial and gateway tier) but not for the sensor and constrained tier.
