@@ -244,3 +244,26 @@ We're supporting X64 and ARM and SO that support containers.
 The **Hardware** size depends on the scenario: if you're going down some complex ML, large models in AI which requires a lot of compute, you might go to the right of the spectrum (get a powerful device with CPU, storage and so on…). But if you are running little workloads like little bit of data aggregation, some analytics, and then you're passing that data to de cloud, or store it, you just need devices of "interactive tier", like Raspberry Pi 3 kind devices. 
 
 The security model is available for this whole spectrum (Interactive, Industrial and gateway tier) but not for the sensor and constrained tier.
+
+## Azure IoT Edge personas and tools
+![Azure IoT Edge personas and tools](/images/14_AzureIoTEdge_personas_and_tools.png)
+
+### VIP (Very Important People) for Azure IoT Edge
+
+#### Developer: <br />
+**Cloud development skills**: one big thing that we're doing with IoT Edge runtime deployed on our devices.<br />
+Developers don't need special skills to develop specifically for those devices, they just need to have the skills to develop cloud applications and the we can deploy these applications onto our Edge devices.<br />
+**Cross platform**, familiar tools and tools you can use on any platform.  
+The developer could **develop and test** in the cloud or in the device connected to the cloud.<br />
+**Continuous iteration**: with containers the developer would be using the tools that we provide.<br />
+
+
+#### Operator:
+**Manage large fleet of devices**, so they have designed this infrastructure, they envision many thousands of edge devices deployed out there, geographically dispersed, all controlled and configured though IoT Hub. <br />
+Operators **stage and deploy** them at scaled and make sure that the deployment's going to thousands of devices is good (maybe doing a test deployment onto a small set of devices, and then move on to the complete set of devices).<br />
+All of this is built into operational workflows, so all we do have **graphical user experiences** in our portal for doing all this managing it at scale. <br />
+But also we understand many business and many enterprises might have their own workflows for deploying the Edge devices and workloads onto edge, so we have an **API layer** for that, and it is enabling us to build our user interfaces on it, and clients can use their own business process on top of that. 
+
+
+## Azure IoT Edge  - Package services in containers
+**What do you do when you package services in containers.**
