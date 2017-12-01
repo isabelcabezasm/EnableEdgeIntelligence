@@ -250,7 +250,7 @@ The security model is available for this whole spectrum (Interactive, Industrial
 
 ### VIP (Very Important People) for Azure IoT Edge
 
-#### Developer: <br />
+#### Developer: 
 **Cloud development skills**: one big thing that we're doing with IoT Edge runtime deployed on our devices.<br />
 Developers don't need special skills to develop specifically for those devices, they just need to have the skills to develop cloud applications and the we can deploy these applications onto our Edge devices.<br />
 **Cross platform**, familiar tools and tools you can use on any platform.  
@@ -266,4 +266,4 @@ But also we understand many business and many enterprises might have their own w
 
 
 ## Azure IoT Edge  - Package services in containers
-**What do you do when you package services in containers.**
+**What do you do when you package services in containers?**
