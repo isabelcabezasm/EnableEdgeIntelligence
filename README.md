@@ -171,7 +171,7 @@ Now, this concept, we can apply it to the IoT edge device as well as the IoT Edg
 
 There are some other things also within a device management: they tag their methods, they job in queries  -i won't mention here-.. But really this is the core concept that we use for IoT Edge.
 
-##IoT Edge in action
+## IoT Edge in action
 ![IoT Edge in Action](/images/11_iotedge_in_action.png)
 
 The blue rectangle is IoT Edge  (device) , with its SO (Windows or Linux).
